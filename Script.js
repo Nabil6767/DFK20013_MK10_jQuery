@@ -1,20 +1,13 @@
 function semak() {
-    var user = $("#username").val();
-    var pass = $("#password").val();
+    var username = document.getElementById('username').value;
+    var password = document.getElementById('password').value;
 
-    if (user == "" || pass == "") {
-        alert("Sila isi kedua-dua ruang tersebut");
-        return false;
-    }
-
-    if (user === "admin" && pass === "1234") {
-        alert("Login Berjaya!");
-        return true;
+    if(username === "admin" && password === "1234") {
+        // Redirect to homePage
+        $.mobile.changePage("#homePage");
+        return false; // prevent default form submission
     } else {
-        alert("Username atau Password salah!");
-        $("#username").val("");
-        $("#password").val("");
-        $("#username").focus();
+        alert("Invalid username or password!");
         return false;
     }
 }

@@ -5,18 +5,32 @@
     <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
     <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
     <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
-    <script src="script.js"></script>
+    <script>
+        function semak() {
+            var username = document.getElementById('username').value;
+            var password = document.getElementById('password').value;
+
+            if(username === "admin" && password === "123") {
+                // Go to homePage
+                $.mobile.changePage("#homePage");
+                return false; // prevent actual form submission
+            } else {
+                alert("Invalid username or password!");
+                return false;
+            }
+        }
+    </script>
 </head>
 <body>
 
+    <!-- First page: Login -->
     <div data-role="page" id="loginPage">
-
         <div data-role="header">
             <h1>Sistem Login</h1>
         </div>
 
         <div data-role="content">
-            <form action="login.php" method="post" onSubmit="return semak()">
+            <form onsubmit="return semak()">
                 <label for="username">Username:</label>
                 <input type="text" name="username" id="username">
 
@@ -30,7 +44,22 @@
         <div data-role="footer" data-position="fixed">
             <h4>Kelas DFK20013 - 2026</h4>
         </div>
+    </div>
 
+    <!-- Second page: Home -->
+    <div data-role="page" id="homePage">
+        <div data-role="header">
+            <h1>Home Page</h1>
+        </div>
+
+        <div data-role="content">
+            <p>Welcome to the home page!</p>
+            <a href="#loginPage" class="ui-btn ui-corner-all">Logout</a>
+        </div>
+
+        <div data-role="footer" data-position="fixed">
+            <h4>Kelas DFK20013 - 2026</h4>
+        </div>
     </div>
 
 </body>
